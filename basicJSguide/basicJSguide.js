@@ -1,5 +1,3 @@
-do {
-	var s = 'Hi world!';
-  document.write(s);
-
-} while(false)
+$('<p>click me</p>').appendTo('body').click(function() {
+        alert(i);
+    });
