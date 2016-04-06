@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<body>
+		
+		<div ng-app="relationShipApp" ng-controller="myCtrl">
+			<h1>RelationShip app</h1>
+			<textarea placeholder="Your message" ng-model="message"></textarea>
+			<input type="button" onclick="post();" value="Post">
+		 	<h2 ng-model="post"></h2>
+		</div>	
+
+	
+		
+		<script>
+		var app = angular.module('relationShipApp', []);
+		app.controller('myCtrl', function($scope) {
+			
+		});
+		</script>
+	</body>
+</html>
