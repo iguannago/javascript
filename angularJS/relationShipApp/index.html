@@ -3,15 +3,12 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<body>
 		
-		<div ng-app="relationShipApp" ng-controller="myCtrl">
+		<div ng-app="relationShipApp" ng-init="staticContent={placeholder:'Your Message', buttonValue:'Post'}" ng-controller="myCtrl">
 			<h1>RelationShip app</h1>
-			<textarea placeholder="Your message" ng-model="message"></textarea>
-			<input type="button" onclick="post();" value="Post">
+			<textarea style="background-color:lightpink" placeholder="{{staticContent.placeholder}}" ng-model="message"></textarea>
+			<input type="button" onclick="post();" value="{{staticContent.buttonValue}}">
 		 	<h2 ng-model="post"></h2>
-		</div>	
-
-	
-		
+		</div>			
 		<script>
 		var app = angular.module('relationShipApp', []);
 		app.controller('myCtrl', function($scope) {
