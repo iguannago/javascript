@@ -3,9 +3,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
-<div ng-app="">
+<div ng-app="" ng-init="middleName='Arroyo'">
  	<p>Name : <input type="text" ng-model="name"></p>
- 	<h1>Hello {{name}}</h1>
+ 	<p>Last Name: <input type="text" ng-model="lastName"></p>
+ 	<h1>Hello {{name}} {{lastName}}</h1>
+ 	<p>Middel Name is:<span ng-bind="middleName"></span></p>
+ 	<p>Full Name is {{name + " " + lastName + " " + middleName}}</p>
+ 	<p>My favorite number is {{ 2 + 2}}</p>
 </div>
 
 </body>
