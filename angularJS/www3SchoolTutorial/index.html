@@ -11,10 +11,24 @@
 		 	<p>My favorite number is {{ 2 + 2}}</p>
 		 	<p>Time: <input style="width: 200px" type="text" ng-model="time"></p>
 
+		 	<div my-custom-directive />
+
 
 		</div>
 		
-		<script src="myApp.js"></script>
+		<!-- <script src="myApp.js"></script> -->
+
+		
+		<script>
+			var app = angular.module('myApp', []);
+
+			app.directive("myCustomDirective", function() {
+				return {
+					template : "This is my custom directive"
+				};
+			});
+
+		</script>
 		<script src="myCtrl.js"></script>
 		
 	</body>
