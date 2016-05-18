@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<body>
+		<div ng-app="myApp" ng-init="middleName='Arroyo'" ng-controller="myCtrl">
+		 	<p>Name: <input type="text" ng-model="name"></p>
+		 	<p>Last Name: <input type="text" ng-model="lastName"></p>
+		 	<h1>Hello {{name}} {{lastName}}</h1>
+		 	<p>Middel Name is:<span ng-bind="middleName"></span></p>
+		 	<p>Full Name is {{name + " " + lastName + " " + middleName}}</p>
+		 	<p>My favorite number is {{ 2 + 2}}</p>
+		 	<p>Time: <input style="width: 200px" type="text" ng-model="time"></p>
+
+		 	<div my-custom-directive />
+
+
+		</div>
+		
+		<!-- <script src="myApp.js"></script> -->
+
+		
+		<script>
+			var app = angular.module('myApp', []);
+
+			app.directive("myCustomDirective", function() {
+				return {
+					template : "This is my custom directive"
+				};
+			});
+
+		</script>
+		<script src="myCtrl.js"></script>
+		
+	</body>
+</html>
