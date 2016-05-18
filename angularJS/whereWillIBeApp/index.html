@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
+<head>
+<style type="text/css">
+#wrapper {
+background:#9c9;
+padding:10px;
+text-align: center;
+}
+
+#main {
+display: inline-block;
+}
+
+#body {
+/*float:right;*/
+/*width:700px;*/
+/*background:#c9c;*/
+padding:10px;
+text-align: center;
+}
+</style>
+</head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 	<body>
-		<div ng-app="myApp" ng-init="middleName='Arroyo'" ng-controller="myCtrl">
-		 	<p>Name: <input type="text" ng-model="name"></p>
-		 	<p>Last Name: <input type="text" ng-model="lastName"></p>
-		 	<h1>Hello {{name}} {{lastName}}</h1>
-		 	<p>Middel Name is:<span ng-bind="middleName"></span></p>
-		 	<p>Full Name is {{name + " " + lastName + " " + middleName}}</p>
-		 	<p>My favorite number is {{ 2 + 2}}</p>
-		 	<p>Time: <input style="width: 200px" type="text" ng-model="time"></p>
+		<div id="wrapper" ng-app="myApp" ng-init="result='Click below to find out'" ng-controller="myCtrl">
+		  <div id="main">
+			<h2>What city will I be in after a given time? {{result}}</h2> 
+		  </div>
 
-		 	<div my-custom-directive />
-
-
+		
 		</div>
-		
-		<!-- <script src="myApp.js"></script> -->
+
+		<div id="body">
+		  	Today Date: <input type="date" name="todayDate" ng-model="todayDate"> 
+		  	Target Date: <input type="date" name="targetDate" ng-model="targetDate"> 
+		</div>
+
 
 		
-		<script>
-			var app = angular.module('myApp', []);
-
-			app.directive("myCustomDirective", function() {
-				return {
-					template : "This is my custom directive"
-				};
-			});
-
-		</script>
+		
+		<script src="myApp.js"></script>
 		<script src="myCtrl.js"></script>
 		
 	</body>
