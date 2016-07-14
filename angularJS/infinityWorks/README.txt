@@ -9,3 +9,4 @@ Improvements:
 There are plenty of improvemtns to be considered: 
 1. Move this app to a Spring Boot and Java project to make it more enterprise. 
 2. Increase the coverage of junit code. If it was a Spring - Java project it would be much easier to follow TDD. 
+3. Definitely the getRatingPercentages method can be refactored to avoid the DRY principle. Again because of I did not have much time I opted for the easiest way, but not the clean one. 
