@@ -178,14 +178,13 @@ describe('Food Hygiene Ratings', function() {
     $controller = _$controller_;
   }));
 
-  describe('Initialise data', function() {
-    it('loading and table_header', function() {
-      var $scope = {};
-      var controller = $controller('myCtrl', { $scope: $scope });
-      expect($scope.loading).toBe(false);
-      expect($scope.table_header).toBe(false);
-    });
+  it('loading and table_header', function() {
+    var $scope = {};
+    var controller = $controller('myCtrl', { $scope: $scope });
+    expect($scope.loading).toBe(false);
+    expect($scope.table_header).toBe(false);
   });
+
 });
 
 
