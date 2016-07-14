@@ -167,7 +167,7 @@ $http({
 }});
 
 /* 
-  Testing the controller 
+  Unit Testing the controller 
 */
 describe('myCtrl', function() {
   var scope, ctrl, httpBackend;
@@ -195,10 +195,16 @@ describe('myCtrl', function() {
     expect(scope.localAuthorities).toEqual([{'LocalAuthorityId': 197}]);
   });
 
+  it('http call to load establishments given a localAuthorityId', function() {
+    httpBackend.expectGET('http://api.ratings.food.gov.uk/Authorities/basic').respond({'authorities': [{'LocalAuthorityId': 197}]});
+    scope.selectedLocalAuthority = {'LocalAuthorityId': 197};
+    httpBackend.expectGET('http://api.ratings.food.gov.uk/Establishments?localAuthorityId=197').respond({'meta': {'totalCount': 5}});
+    scope.getRatingPercentages();
+    httpBackend.flush();
+    expect(scope.totalCount).toEqual(5);
+  });
+
 });
-
-
-
 
 </script>
 
