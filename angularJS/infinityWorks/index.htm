@@ -167,22 +167,32 @@ $http({
 }});
 
 /* 
-  Test code 
+  Testing the controller 
 */
-describe('Food Hygiene Ratings', function() {
+describe('myCtrl', function() {
+  var scope, ctrl, httpBackend;
+  // Set up the module
   beforeEach(module('myApp'));
 
-  var $controller;
+  beforeEach(inject(function($controller, $rootScope, $httpBackend) {
+        httpBackend = $httpBackend;
+        scope = $rootScope.$new();
+        ctrl = $controller("myCtrl", {'$scope': scope});
+      }
+    )
+  );
 
-  beforeEach(inject(function(_$controller_){
-    $controller = _$controller_;
-  }));
 
-  it('loading and table_header', function() {
-    var $scope = {};
-    var controller = $controller('myCtrl', { $scope: $scope });
-    expect($scope.loading).toBe(false);
-    expect($scope.table_header).toBe(false);
+  it('loading and table_header variables are Initialised', function() {
+    expect(scope.loading).toBe(false);
+    expect(scope.table_header).toBe(false);
+  });
+
+
+  it('http call to localAuthorities', function() {
+    httpBackend.expectGET('http://api.ratings.food.gov.uk/Authorities/basic').respond({'authorities': [{'LocalAuthorityId': 197}]});
+    httpBackend.flush();
+    expect(scope.localAuthorities).toEqual([{'LocalAuthorityId': 197}]);
   });
 
 });
