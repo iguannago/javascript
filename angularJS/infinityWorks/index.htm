@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+  <!-- angular libraries have to go after the jasmine ones -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-mocks.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>Food Hygiene Ratings</title>
@@ -46,12 +52,12 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
 
-//Initialise spinner
+//Initialise data
 $scope.loading = false;
 $scope.table_header = false;
 
 //Get Local Authoritites and load the dropdown menu
-  $http({
+$http({
     method : "GET",
     url : "http://api.ratings.food.gov.uk/Authorities/basic", 
     headers: {
@@ -159,6 +165,32 @@ $scope.table_header = false;
   });
    
 }});
+
+/* 
+  Test code 
+*/
+describe('Food Hygiene Ratings', function() {
+  beforeEach(module('myApp'));
+
+  var $controller;
+
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+  }));
+
+  describe('Initialise data', function() {
+    it('loading and table_header', function() {
+      var $scope = {};
+      var controller = $controller('myCtrl', { $scope: $scope });
+      expect($scope.loading).toBe(false);
+      expect($scope.table_header).toBe(false);
+    });
+  });
+});
+
+
+
+
 </script>
 
 </body>
